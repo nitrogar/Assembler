@@ -1,0 +1,51 @@
+
+addi $1 , $0 , 8
+
+
+jal bubblesort
+
+
+bubbleSort:
+
+   do: 	addi $1, $1, -1
+
+
+        ble	$1, $0 , L2
+
+
+        addi $5, $0 , 0
+
+
+        addi $2, $0 , 0
+
+
+        addi $3, $0 , 0
+
+for:	lw	$6, 0($5)			# $t3 = A[i]
+
+        lw	$4, 4($5)			# $t4 = A[i+1]
+
+        ble	$6, $4, L1			# branch if (A[i] <= A[i+1])
+
+        sw	$4, 0($5)			# A[i] = $t4
+
+        sw	$6, 4($5)			# A[i+1] = $t3
+
+        addi $3, $0 , 1				# swapped = 1
+
+
+L1:
+        addi	$3, $3, 1
+
+        addi	$5, $5, 4
+
+
+        bne	$3, $1, for
+
+
+        bne	$2, $0, do
+
+
+L2:	jr	$7
+
+lui 0xfff
